@@ -22,8 +22,10 @@ The Fuel Counter-Upper needs to know the total fuel requirement. To find it, ind
 What is the sum of the fuel requirements for all of the modules on your spacecraft?
 """
 
+
 def calculate_fuel_for_module(module_mass: float) -> int:
     return module_mass // 3 - 2
+
 
 def main():
     input_path = './input_1.txt'
@@ -34,6 +36,7 @@ def main():
             required_fuel += calculate_fuel_for_module(float(line))
 
     print(f'Required Fuel = {required_fuel}')
+
 
 if __name__ == "__main__":
     main()

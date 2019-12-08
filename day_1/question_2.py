@@ -11,6 +11,7 @@ The fuel required by a module of mass 100756 and its fuel is: 33583 + 11192 + 37
 What is the sum of the fuel requirements for all of the modules on your spacecraft when also taking into account the mass of the added fuel? (Calculate the fuel requirements for each module separately, then add them all up at the end.)
 """
 
+
 def calculate_fuel_for_module_recursive(module_mass: float) -> float:
     fuel = calculate_fuel_for_module(module_mass)
     if fuel <= 0:
@@ -18,8 +19,10 @@ def calculate_fuel_for_module_recursive(module_mass: float) -> float:
     else:
         return fuel + calculate_fuel_for_module_recursive(fuel)
 
+
 def calculate_fuel_for_module(module_mass: float) -> float:
     return module_mass // 3 - 2
+
 
 def main():
     input_path = './input_1.txt'
@@ -30,6 +33,7 @@ def main():
             required_fuel += calculate_fuel_for_module_recursive(float(line))
 
     print(f'Required Fuel = {required_fuel}')
+
 
 if __name__ == "__main__":
     main()
