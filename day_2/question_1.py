@@ -67,9 +67,7 @@ def get_instruction(index, instructions):
             instructions[index + 3])
 
 
-def main(filepath):
-    instructions = parse_file_to_array(filepath)
-
+def run_instructions(instructions):
     i = 0
     while True:
         # Fetch instruction
@@ -77,18 +75,25 @@ def main(filepath):
 
         if opcode == 99:
             print('Hit Opcode 99')
+            i += 1
             break
 
         elif opcode == 1:
             instructions[ret_pos] = param_1 + param_2
+            i += 4
         elif opcode == 2:
             instructions[ret_pos] = param_1 * param_2
+            i += 4
         else:
             print('Unknown opcode')
             break
 
-        i += 4
-    print(instructions)
+    return instructions
+
+
+def main(filepath):
+    instructions = parse_file_to_array(filepath)
+    print(run_instructions(instructions))
 
 
 if __name__ == "__main__":
